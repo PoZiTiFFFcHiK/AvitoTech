@@ -1,0 +1,27 @@
+//
+//  SceneDelegate.swift
+//  Avito
+//
+//  Created by Владимир on 18.01.2021.
+//
+
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+    var window: UIWindow?
+
+
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let context = ServiceModuleContext()
+        let container = ServiceModuleContainer.assemble(with: context)
+        
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = container.viewController
+        window.makeKeyAndVisible()
+        self.window = window
+    }
+}
+
